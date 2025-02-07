@@ -1,0 +1,151 @@
+# ====================================================================================
+# 🏗️  Ingress Configuration for ALB on Kubernetes
+# ====================================================================================
+# This file contains multiple examples of AWS ALB Ingress configurations.
+# Choose the one that fits your use case by uncommenting the desired section.
+# Ensure the correct values are filled in for services, domains, and certificates.
+# ====================================================================================
+
+# ====================================================================================
+# Example 1️⃣: Basic ALB Ingress - Public Access without SSL or Domain Configuration
+# ====================================================================================
+# This Ingress exposes an application using an AWS Application Load Balancer (ALB).
+# Traffic is routed directly to pod IPs without any path-based or host-based rules.
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: basic-alb-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb                        # Specify the ALB Ingress Controller
+    alb.ingress.kubernetes.io/scheme: internet-facing      # Expose ALB publicly
+    alb.ingress.kubernetes.io/target-type: ip              # Route traffic directly to pod IPs
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: my-app-service                       # Replace with your service name
+                port:
+                  number: 80
+
+# ====================================================================================
+# Example 2️⃣: ALB Ingress with SSL Redirect and Domain Configuration
+# ====================================================================================
+# This Ingress redirects HTTP traffic to HTTPS using an ACM certificate.
+# Replace `example.com` with your domain and the ACM certificate ARN.
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ssl-alb-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: alb                          # Use ALB Ingress Controller
+#     alb.ingress.kubernetes.io/scheme: internet-facing        # Expose ALB publicly
+#     alb.ingress.kubernetes.io/target-type: ip                # Target pod IPs directly
+#     alb.ingress.kubernetes.io/ssl-redirect: '443'            # Redirect HTTP to HTTPS
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:211125475524:certificate/938c460f-a958-4809-bb8d-77bdaf7c7d9c  # Replace with your ACM certificate ARN
+# spec:
+#   ingressClassName: alb
+#   rules:
+#     - host: example.com                                      # Replace with your actual domain
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: my-app-service                         # Your app service name
+#                 port:
+#                   number: 80
+
+# ====================================================================================
+# Example 3️⃣: ALB Ingress with Path-Based Routing
+# ====================================================================================
+# This Ingress routes traffic based on specific paths.
+# `/` routes to the default app, `/test` routes to a different service.
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: path-based-alb-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: alb                          # Use ALB Ingress Controller
+#     alb.ingress.kubernetes.io/scheme: internet-facing        # Expose ALB publicly
+#     alb.ingress.kubernetes.io/target-type: ip                # Target pod IPs directly
+#     alb.ingress.kubernetes.io/ssl-redirect: '443'            # Redirect HTTP to HTTPS
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:211125475524:certificate/938c460f-a958-4809-bb8d-77bdaf7c7d9c  # Replace with your ACM certificate ARN
+# spec:
+#   ingressClassName: alb
+#   rules:
+#     - host: example.com                                      # Replace with your actual domain
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: my-app-service                         # Your app service name
+#                 port:
+#                   number: 80
+#           - path: /test
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: test-app-service                       # Service handling `/test` path
+#                 port:
+#                   number: 80
+
+# ====================================================================================
+# Example 4️⃣: ALB Ingress with Host-Based Routing for Multiple Applications
+# ====================================================================================
+# This Ingress routes traffic to different services based on the subdomain.
+# Requests to `nginx.example.com` go to the Nginx service, and `apache.example.com` to Apache.
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: host-based-alb-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: alb                          # Use ALB Ingress Controller
+#     alb.ingress.kubernetes.io/scheme: internet-facing        # Expose ALB publicly
+#     alb.ingress.kubernetes.io/target-type: ip                # Target pod IPs directly
+#     alb.ingress.kubernetes.io/ssl-redirect: '443'            # Redirect HTTP to HTTPS
+#     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:211125475524:certificate/938c460f-a958-4809-bb8d-77bdaf7c7d9c  # Replace with your ACM certificate ARN
+# spec:
+#   ingressClassName: alb
+#   rules:
+#     - host: nginx.example.com                                # Replace with your actual domain
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: nginx-service                          # Your Nginx service name
+#                 port:
+#                   number: 80
+#     - host: apache.example.com                               # Replace with your actual domain
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: apache-service                         # Your Apache service name
+#                 port:
+#                   number: 80
+
+# ====================================================================================
+# 🚀 Usage Instructions:
+# ====================================================================================
+# 1. Uncomment the Ingress configuration that fits your use case.
+# 2. Replace placeholder values with your actual service names, domains, and certificate ARNs.
+# 3. Apply the configuration using the command:
+#    kubectl apply -f <your-ingress-file>.yaml
+# 4. Verify that the ALB is created and correctly routes traffic:
+#    kubectl get ingress
+# ====================================================================================
