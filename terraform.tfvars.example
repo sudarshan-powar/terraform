@@ -67,7 +67,7 @@ alternative_alias_record_domain = "www.example.com"
 #################################### VPC (NETWORKING) ####################################
 # ✅ Amazon VPC setup for networking.
 
-project_vpc_name = "${PROJECT_NAME}-vpc"
+project_vpc_name = "YOUR_PROJECT_NAME-vpc"
 vpc_cidr_block = "10.0.0.0/16"
 public_subnet_cidr_1 = "10.0.0.0/20"
 public_subnet_cidr_2 = "10.0.32.0/20"
@@ -82,11 +82,11 @@ az_private_2 = "us-east-1b"
 #################################### EC2 (COMPUTE INSTANCES) ####################################
 # ✅ Amazon EC2 for hosting web applications.
 
-ec2_instance_name = "${PROJECT_NAME}-Public_Server"
+ec2_instance_name = "YOUR_PROJECT_NAME-Public_Server"
 ec2_instance_type = "t2.micro"
-ec2_keypair_name = "${PROJECT_NAME}_EC2_keypair"
-ec2_public_security_group_name = "${PROJECT_NAME}_EC2_Public_SG"
-ec2_private_security_group_name = "${PROJECT_NAME}_EC2_Private_SG"
+ec2_keypair_name = "YOUR_PROJECT_NAME_EC2_keypair"
+ec2_public_security_group_name = "$YOUR_PROJECT_NAME_EC2_Public_SG"
+ec2_private_security_group_name = "YOUR_PROJECT_NAME_EC2_Private_SG"
 ec2_root_volume_size = 8  # Root volume size in GB
 ec2_root_volume_type = "gp3"  # Volume type (gp2, gp3, io1, etc.)
 
@@ -112,7 +112,7 @@ db_username = "admin1234"
 db_password = "admin1234"
 db_storage_type = "gp3"
 db_multi_az = true
-db_private_sg_name = "${PROJECT_NAME}_db_rds_sg"
+db_private_sg_name = "YOUR_PROJECT_NAME_db_rds_sg"
 db_skip_final_snapshot = true
 db_port = 1433
 db_publicly_accessible = false
@@ -121,17 +121,17 @@ db_backup_window = "03:00-05:00"
 db_copy_tags_to_snapshot = true
 db_kms_key_id = "alias/aws/rds"
 db_auto_minor_upgrade = true
-db_subnet_group_name = "${PROJECT_NAME}_db_subnet_group"
+db_subnet_group_name = "YOUR_PROJECT_NAME_db_subnet_group"
 db_license_model = "license-included"
 db_deletion_protection = false
 
 #################################### EKS (KUBERNETES) ####################################
 # ✅ Amazon EKS for Kubernetes cluster management.
 
-eks_iam_cluster_role_name = "${PROJECT_NAME}_IAM_Cluster_Role"
-eks_cluster_name = "${PROJECT_NAME}_Cluster"
-eks_node_group_name = "${PROJECT_NAME}_Node_group"
-eks_node_group_role_name = "${PROJECT_NAME}_Node_Group_Role"
+eks_iam_cluster_role_name = "YOUR_PROJECT_NAME_IAM_Cluster_Role"
+eks_cluster_name = "YOUR_PROJECT_NAME_Cluster"
+eks_node_group_name = "YOUR_PROJECT_NAME_Node_group"
+eks_node_group_role_name = "YOUR_PROJECT_NAME_Node_Group_Role"
 eks_kubernetes_version = "1.31"
 eks_launch_template_instance_type = "t2.medium"
 eks_launch_template_volume_size = 20
@@ -148,7 +148,7 @@ eks_addon_vpc_cni_version = "v1.19.0-eksbuild.1"
 #################################### ECR (CONTAINER REGISTRY) ####################################
 # ✅ Amazon ECR for managing container images.
 
-ecr_repository_name = "${PROJECT_NAME}_ecr_repo"
+ecr_repository_name = "YOUR_PROJECT_NAME_ecr_repo"
 ecr_encryption_type = "AES256"
 ecr_mutability = "MUTABLE"
 ecr_force_delete = true
