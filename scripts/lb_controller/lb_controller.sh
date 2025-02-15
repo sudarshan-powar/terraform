@@ -170,7 +170,7 @@ kubectl get pods -n cert-manager
 # 🔁 Download Controller Manifest
 # ===============================
 echo "🔹 Downloading AWS Load Balancer Controller manifest..."
-curl -Lo v2_11_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v${LB_CONTROLLER_VERSION}/v2_11_0_full.yaml
+curl -Lo v2_11_0_full.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/${LB_CONTROLLER_VERSION}/v2_11_0_full.yaml
 
 # ===============================
 # 🛏️ Remove Default ServiceAccount Section
@@ -223,7 +223,7 @@ kubectl apply -f v2_11_0_full.yaml
 # 🔁 Download IngressClass and IngressClassParams Manifest
 # ===============================
 echo "🔹 Downloading IngressClass and IngressClassParams manifest..."
-curl -Lo v2_11_0_ingclass.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v${LB_CONTROLLER_VERSION}/v2_11_0_ingclass.yaml
+curl -Lo v2_11_0_ingclass.yaml https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/${LB_CONTROLLER_VERSION}/v2_11_0_ingclass.yaml
 
 # ===============================
 # 📁 Apply IngressClass Manifest
