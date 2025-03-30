@@ -24,7 +24,7 @@ output "keypair_name" {
 }
 
 output "private_sg_id" {
-  value = aws_security_group.ec2_private_sg.id  
+  value = aws_security_group.ec2_private_sg.id
 }
 
 output "public_sg_id" {

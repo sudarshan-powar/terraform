@@ -18,8 +18,8 @@ resource "aws_eks_cluster" "project_eks" {
 
   # 🌐 Networking Configuration
   vpc_config {
-    endpoint_private_access = true   # Enable private access
-    endpoint_public_access  = true   # Enable public access
+    endpoint_private_access = true # Enable private access
+    endpoint_public_access  = true # Enable public access
 
     # 🏗️ Subnets used by the EKS cluster
     subnet_ids = [
@@ -46,8 +46,8 @@ resource "aws_eks_cluster" "project_eks" {
 
   # 🏷️ Tags for resource identification
   tags = {
-    Name        = var.EKS_CLUSTER_NAME
-    Terraform   = "True"
+    Name                                            = var.EKS_CLUSTER_NAME
+    Terraform                                       = "True"
     "kubernetes.io/cluster/${var.EKS_CLUSTER_NAME}" = "owned"
   }
 }

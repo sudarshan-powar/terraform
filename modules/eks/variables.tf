@@ -162,33 +162,33 @@ variable "AWS_REGION" {
 variable "EKS_COREDNS_VERSION" {
   description = "Version of CoreDNS add-on for EKS"
   type        = string
-  default     = "v1.11.3-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v1.11.3-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 # 🔹 Kube-proxy Add-on Version
 variable "EKS_KUBE_PROXY_VERSION" {
   description = "Version of Kube-proxy add-on for EKS"
   type        = string
-  default     = "v1.31.2-eksbuild.3"  # Replace with the latest AWS recommended version
+  default     = "v1.31.2-eksbuild.3" # Replace with the latest AWS recommended version
 }
 
 # 🔹 Metrics Server Add-on Version
 variable "EKS_METRICS_SERVER_VERSION" {
   description = "Version of Metrics Server add-on for EKS"
   type        = string
-  default     = "v0.7.2-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v0.7.2-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 # 🔹 Pod Identity Server Add-on Version (if enabled)
 variable "EKS_POD_IDENTITY_VERSION" {
   description = "Version of Pod Identity Server add-on for EKS"
   type        = string
-  default     = "v0.7.2-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v0.7.2-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 # 🔹 Amazon VPC CNI Add-on Version
 variable "EKS_VPC_CNI_VERSION" {
   description = "Version of Amazon VPC CNI add-on for EKS"
   type        = string
-  default     = "v1.19.0-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v1.19.0-eksbuild.1" # Replace with the latest AWS recommended version
 }

@@ -12,7 +12,7 @@ resource "aws_route_table" "public_route_tb" {
   }
 
   tags = {
-    Name = "${var.PROJECT_VPC_NAME}-Public-Route-Tb"
+    Name      = "${var.PROJECT_VPC_NAME}-Public-Route-Tb"
     Terraform = "True"
   }
 }

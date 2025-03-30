@@ -103,7 +103,7 @@ variable "EBS_VOLUME_TYPE" {
 variable "EBS_DEVICE_NAME" {
   description = "Device name for the additional EBS volume"
   type        = string
-  default     = "/dev/xvdf"     # Default for Ubuntu (For storage types T2, T3, T4g, M5, C5, R5, etc.)
+  default     = "/dev/xvdf" # Default for Ubuntu (For storage types T2, T3, T4g, M5, C5, R5, etc.)
 }
 
 variable "EBS_IOPS" {

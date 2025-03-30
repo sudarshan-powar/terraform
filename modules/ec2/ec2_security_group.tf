@@ -20,7 +20,7 @@ resource "aws_security_group" "ec2_private_sg" {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
-    security_groups = [aws_security_group.ec2_public_sg.id]  # Only allow SSH from Public SG
+    security_groups = [aws_security_group.ec2_public_sg.id] # Only allow SSH from Public SG
   }
 
   tags = {
@@ -39,7 +39,7 @@ resource "aws_security_group" "ec2_public_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Open to all (Can be restricted to a specific IP)
+    cidr_blocks = ["0.0.0.0/0"] # Open to all (Can be restricted to a specific IP)
   }
 
   # Allow all outbound traffic (egress)

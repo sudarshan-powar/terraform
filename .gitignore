@@ -1,0 +1,38 @@
+# Local .terraform directories
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Backend S3
+backend.tf
+
+# Crash logs
+crash.log
+
+# Exclude CLI output plans
+*.tfplan
+
+# Sensitive variable files
+terraform.tfvars
+*.auto.tfvars
+
+# Backup files created by Terraform
+*.backup
+
+# Ignore override files (for local testing)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform lock file (optional — include only if your team requires local-only pinning)
+.terraform.lock.hcl
+
+# Ignore editor and OS-specific files
+*.swp
+*.swo
+.DS_Store
+.idea/
+.vscode/

@@ -4,7 +4,7 @@
 variable "PROJECT_NAME" {
   description = "This is the name of the Project"
   type        = string
-  default = "Project"
+  default     = "Project"
 }
 
 #################################### PROVIDER ####################################
@@ -36,25 +36,25 @@ variable "AWS_REGION" {
 
 variable "s3_frontend_bucket_name" {
   description = "Name of the S3 frontend bucket"
-  type = string
+  type        = string
 }
 
 variable "s3_frontend_bucket_versioning" {
   description = "Enable or Disable versioning for S3 frontend bucket"
-  type = string
-  default = "Disabled" # Default versioning disabled
+  type        = string
+  default     = "Disabled" # Default versioning disabled
 }
 
 variable "s3_frontend_bucket_force_destroy" {
   description = "Enable or Disable force destroy for S3 frontend bucket"
-  type = bool
-  default = false # Default to false to prevent accidental deletion
+  type        = bool
+  default     = false # Default to false to prevent accidental deletion
 }
 
 variable "s3_frontend_bucket_object_lock" {
   description = "Enable or Disable object lock for S3 frontend bucket"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 #################################### ACM ####################################
@@ -62,19 +62,19 @@ variable "s3_frontend_bucket_object_lock" {
 
 variable "domain_name" {
   description = "Domain name of the project"
-  type = string
+  type        = string
 }
 
 variable "validation_method" {
   description = "DNS validation method"
-  type = string
-  default = "DNS"
+  type        = string
+  default     = "DNS"
 }
 
 variable "acm_alternative_names" {
   description = "Alternative domain names of the project"
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 #################################### ROUTE 53 ####################################
@@ -82,13 +82,13 @@ variable "acm_alternative_names" {
 
 variable "r53_domain_name" {
   description = "Domain name of the project"
-  type = string
+  type        = string
 }
 
 variable "r53_force_destroy" {
   description = "This will destroy all the records if enabled"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 ###################################### OAC ########################################
@@ -96,20 +96,20 @@ variable "r53_force_destroy" {
 
 variable "oac_type" {
   description = "Type of Origin Access Control"
-  type = string
-  default = "s3"
+  type        = string
+  default     = "s3"
 }
 
 variable "oac_signing_behavior" {
   description = "Signing behavior for Origin Access Control"
-  type = string
-  default = "always"
+  type        = string
+  default     = "always"
 }
 
 variable "oac_signing_protocol" {
   description = "Signing protocol for Origin Access Control"
-  type = string
-  default = "sigv4"
+  type        = string
+  default     = "sigv4"
 }
 
 #################################### CLOUDFRONT ####################################
@@ -117,114 +117,114 @@ variable "oac_signing_protocol" {
 
 variable "cf_enable" {
   description = "Enable or disable the CloudFront Distribution"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "cf_ipv6" {
   description = "Enable IPv6 for CloudFront Distribution"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "cf_root_object" {
   description = "Root object to redirect to (e.g., index.html)"
-  type = string
-  default = "index.html"
+  type        = string
+  default     = "index.html"
 }
 
 variable "cf_logs_bucket" {
   description = "Logs for this CloudFront Distribution will be stored in this bucket"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "cf_cookies_enabled" {
   description = "Enable cookies support for CloudFront"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "cf_aliases" {
   description = "List of alternative domain names"
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "cf_allowed_methods" {
   description = "Allowed HTTP methods"
-  type = list(string)
-  default = ["GET", "HEAD"]
+  type        = list(string)
+  default     = ["GET", "HEAD"]
 }
 
 variable "cf_cached_methods" {
   description = "Cached HTTP methods"
-  type = list(string)
-  default = ["GET", "HEAD"]
+  type        = list(string)
+  default     = ["GET", "HEAD"]
 }
 
 variable "cf_query_string" {
   description = "Enable forwarding of query strings"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "cf_cookies_forward" {
   description = "Specify how cookies are forwarded"
-  type = string
-  default = "none"
+  type        = string
+  default     = "none"
 }
 
 variable "cf_viewer_protocol_policy" {
   description = "Viewer protocol policy (allow-all, https-only, redirect-to-https)"
-  type = string
-  default = "allow-all"
+  type        = string
+  default     = "allow-all"
 }
 
 variable "cf_priceclass" {
   description = "CloudFront price class"
-  type = string
-  default = "PriceClass_All"
+  type        = string
+  default     = "PriceClass_All"
 }
 
 variable "cf_restriction_type" {
   description = "CloudFront geographic restriction type"
-  type = string
-  default = "none"
+  type        = string
+  default     = "none"
 }
 
 variable "cf_restricted_locations" {
   description = "List of restricted locations"
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "cf_default_certificate" {
   description = "Use default CloudFront SSL certificate"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "cf_ssl_support_method" {
   description = "SSL support method"
-  type = string
-  default = "sni-only"
+  type        = string
+  default     = "sni-only"
 }
 
 variable "cf_min_protocol_version" {
   description = "Minimum TLS protocol version"
-  type = string
-  default = "TLSv1.2_2021"
+  type        = string
+  default     = "TLSv1.2_2021"
 }
 
 variable "alias_record_domain" {
   description = "Primary alias domain for CloudFront"
-  type = string
+  type        = string
 }
 
 variable "alternative_alias_record_domain" {
   description = "Alternative alias domain for CloudFront"
-  type = string
+  type        = string
 }
 
 #################################### VPC ####################################
@@ -232,7 +232,7 @@ variable "alternative_alias_record_domain" {
 
 variable "project_vpc_name" {
   description = "Name for the VPC"
-  type = string
+  type        = string
 }
 
 variable "vpc_cidr_block" {
@@ -243,52 +243,52 @@ variable "vpc_cidr_block" {
 
 variable "public_subnet_cidr_1" {
   description = "CIDR block for public subnet 1"
-  type = string
-  default = "10.0.0.0/20"
+  type        = string
+  default     = "10.0.0.0/20"
 }
 
 variable "public_subnet_cidr_2" {
   description = "CIDR block for public subnet 2"
-  type = string
-  default = "10.0.32.0/20"
+  type        = string
+  default     = "10.0.32.0/20"
 }
 
 variable "private_subnet_cidr_1" {
   description = "CIDR block for private subnet 1"
-  type = string
-  default = "10.0.16.0/20"
+  type        = string
+  default     = "10.0.16.0/20"
 }
 
 variable "private_subnet_cidr_2" {
   description = "CIDR block for private subnet 2"
-  type = string
-  default = "10.0.48.0/20"
+  type        = string
+  default     = "10.0.48.0/20"
 }
 
 variable "ipv6_on_creation" {
   description = "Specify true to indicate that subnets should be assigned IPv6 addresses"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "az_public_1" {
   description = "Availability Zone for public subnet 1"
-  type = string
+  type        = string
 }
 
 variable "az_public_2" {
   description = "Availability Zone for public subnet 2"
-  type = string
+  type        = string
 }
 
 variable "az_private_1" {
   description = "Availability Zone for private subnet 1"
-  type = string
+  type        = string
 }
 
 variable "az_private_2" {
   description = "Availability Zone for private subnet 2"
-  type = string
+  type        = string
 }
 
 #################################### EC2 #####################################
@@ -296,32 +296,32 @@ variable "az_private_2" {
 
 variable "ec2_instance_name" {
   description = "Name for the EC2 instance"
-  type = string
-  default = "Project_Web_Server"
+  type        = string
+  default     = "Project_Web_Server"
 }
 
 variable "ec2_instance_type" {
   description = "EC2 instance type"
-  type = string
-  default = "t2.micro"
+  type        = string
+  default     = "t2.micro"
 }
 
 variable "ec2_keypair_name" {
   description = "Key pair name for SSH access"
-  type = string
-  default = "Project_keypair"
+  type        = string
+  default     = "Project_keypair"
 }
 
 variable "ec2_public_security_group_name" {
   description = "Public security group name for EC2"
-  type = string
-  default = "Project_EC2_Public_Security_Group"
+  type        = string
+  default     = "Project_EC2_Public_Security_Group"
 }
 
 variable "ec2_private_security_group_name" {
   description = "Private security group name for EC2"
-  type = string
-  default = "Project_EC2_Private_Security_Group"
+  type        = string
+  default     = "Project_EC2_Private_Security_Group"
 }
 
 variable "ec2_root_volume_size" {
@@ -351,7 +351,7 @@ variable "ec2_ebs_volume_type" {
 variable "ec2_ebs_device_name" {
   description = "Device name for the additional EBS volume"
   type        = string
-  default     = "/dev/xvdf"     # Default for Ubuntu (For storage types T2, T3, T4g, M5, C5, R5, etc.)
+  default     = "/dev/xvdf" # Default for Ubuntu (For storage types T2, T3, T4g, M5, C5, R5, etc.)
 }
 
 variable "ec2_ebs_iops" {
@@ -383,7 +383,7 @@ variable "ec2_ebs_delete_on_termination" {
 variable "db_name" {
   description = "Name for the RDS instance"
   type        = string
-  default = "my-db"
+  default     = "my-db"
 }
 
 variable "db_instance_identifier" {
@@ -440,8 +440,8 @@ variable "db_storage_type" {
 
 variable "db_private_sg_name" {
   description = "Name of the security group for Database"
-  type = string
-  default = "Project_DB_Security_Group"
+  type        = string
+  default     = "Project_DB_Security_Group"
 }
 
 variable "db_iops" {
@@ -605,31 +605,31 @@ variable "eks_worker_node_ami_id" {
 variable "eks_addon_coredns_version" {
   description = "Version of CoreDNS add-on for EKS"
   type        = string
-  default     = "v1.11.3-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v1.11.3-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 variable "eks_addon_kube_proxy_version" {
   description = "Version of Kube-proxy add-on for EKS"
   type        = string
-  default     = "v1.31.2-eksbuild.3"  # Replace with the latest AWS recommended version
+  default     = "v1.31.2-eksbuild.3" # Replace with the latest AWS recommended version
 }
 
 variable "eks_addon_metric_server_version" {
   description = "Version of Metrics Server add-on for EKS"
   type        = string
-  default     = "v0.7.2-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v0.7.2-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 variable "eks_addon_pod_identity_version" {
   description = "Version of Pod Identity Server add-on for EKS"
   type        = string
-  default     = "v0.7.2-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v0.7.2-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 variable "eks_addon_vpc_cni_version" {
   description = "Version of Amazon VPC CNI add-on for EKS"
   type        = string
-  default     = "v1.19.0-eksbuild.1"  # Replace with the latest AWS recommended version
+  default     = "v1.19.0-eksbuild.1" # Replace with the latest AWS recommended version
 }
 
 #################################### ECR #####################################
@@ -637,30 +637,30 @@ variable "eks_addon_vpc_cni_version" {
 
 variable "ecr_repository_name" {
   description = "Name for ECR repository"
-  type = string
-  default = "Project_ECR_Repo"
+  type        = string
+  default     = "Project_ECR_Repo"
 }
 
 variable "ecr_encryption_type" {
   description = "The encryption type to use for the repository"
-  type = string
-  default = "AES256"
+  type        = string
+  default     = "AES256"
 }
 
 variable "ecr_mutability" {
   description = "The tag mutability setting for the repository"
-  type = string
-  default = "MUTABLE"
+  type        = string
+  default     = "MUTABLE"
 }
 
 variable "ecr_force_delete" {
   description = "If true, will delete the repository even if it contains images"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "ecr_image_scan" {
   description = "Indicates whether images are scanned after being pushed to the repository (true) or not scanned (false)"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }

@@ -5,7 +5,7 @@
 # 🔍 Fetch the latest Ubuntu AMI from AWS Marketplace
 data "aws_ami" "ubuntu" {
   most_recent = true
-  owners      = ["099720109477"]  # Canonical's AWS account ID for official Ubuntu AMIs
+  owners      = ["099720109477"] # Canonical's AWS account ID for official Ubuntu AMIs
 
   filter {
     name   = "name"
@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "architecture"
-    values = ["x86_64"]  # Ensures we get a 64-bit AMI
+    values = ["x86_64"] # Ensures we get a 64-bit AMI
   }
 
   filter {

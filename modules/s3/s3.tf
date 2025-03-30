@@ -4,12 +4,12 @@
 #######################################
 
 resource "aws_s3_bucket" "frontend_bucket" {
-  bucket              = var.S3_FRONTEND_BUCKET  # Name of the S3 bucket
-  force_destroy       = var.S3_FRONTEND_BUCKET_FORCE_DESTROY  # Enables force deletion if true
-  object_lock_enabled = var.S3_FRONTEND_BUCKET_OBJECT_LOCK  # Enables object lock if true
+  bucket              = var.S3_FRONTEND_BUCKET               # Name of the S3 bucket
+  force_destroy       = var.S3_FRONTEND_BUCKET_FORCE_DESTROY # Enables force deletion if true
+  object_lock_enabled = var.S3_FRONTEND_BUCKET_OBJECT_LOCK   # Enables object lock if true
 
   tags = {
-    Terraform = "True"  # Identifies that this resource is managed by Terraform
+    Terraform = "True" # Identifies that this resource is managed by Terraform
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_s3_bucket" "frontend_bucket" {
 resource "aws_s3_bucket_ownership_controls" "s3_frontend_onwership" {
   bucket = aws_s3_bucket.frontend_bucket.id
   rule {
-    object_ownership = "BucketOwnerPreferred"  # Defines ownership rule for objects in the bucket
+    object_ownership = "BucketOwnerPreferred" # Defines ownership rule for objects in the bucket
   }
 }
 
@@ -33,10 +33,10 @@ resource "aws_s3_bucket_ownership_controls" "s3_frontend_onwership" {
 resource "aws_s3_bucket_public_access_block" "s3_frontend_block" {
   bucket = aws_s3_bucket.frontend_bucket.id
 
-  block_public_acls       = true  # Blocks new public ACLs
-  block_public_policy     = true  # Prevents public bucket policies
-  ignore_public_acls      = true  # Ignores any existing public ACLs
-  restrict_public_buckets = true  # Restricts bucket from becoming public
+  block_public_acls       = true # Blocks new public ACLs
+  block_public_policy     = true # Prevents public bucket policies
+  ignore_public_acls      = true # Ignores any existing public ACLs
+  restrict_public_buckets = true # Restricts bucket from becoming public
 }
 
 #######################################
@@ -47,6 +47,6 @@ resource "aws_s3_bucket_public_access_block" "s3_frontend_block" {
 resource "aws_s3_bucket_versioning" "s3_frontend_versioning" {
   bucket = aws_s3_bucket.frontend_bucket.id
   versioning_configuration {
-    status = var.S3_FRONTEND_BUCKET_VERSIONING  # Sets the versioning status (e.g., Enabled, Suspended)
+    status = var.S3_FRONTEND_BUCKET_VERSIONING # Sets the versioning status (e.g., Enabled, Suspended)
   }
 }

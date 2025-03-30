@@ -4,7 +4,7 @@
 #######################################
 
 resource "aws_eip" "eip_ngw" {
-  domain = "vpc"  # Associates the EIP with the VPC
+  domain = "vpc" # Associates the EIP with the VPC
 
   tags = {
     Terraform = "True"
@@ -17,11 +17,11 @@ resource "aws_eip" "eip_ngw" {
 #######################################
 
 resource "aws_nat_gateway" "project-nat-gw" {
-  allocation_id = aws_eip.eip_ngw.id  # Associates the EIP with the NAT Gateway
-  subnet_id     = aws_subnet.public_subnet-1.id  # Places NAT Gateway in a public subnet
+  allocation_id = aws_eip.eip_ngw.id            # Associates the EIP with the NAT Gateway
+  subnet_id     = aws_subnet.public_subnet-1.id # Places NAT Gateway in a public subnet
 
   tags = {
-    Name      = "${var.PROJECT_VPC_NAME}-Nat_GW"  # Assigns a name to the NAT Gateway
+    Name      = "${var.PROJECT_VPC_NAME}-Nat_GW" # Assigns a name to the NAT Gateway
     Terraform = "True"
   }
 

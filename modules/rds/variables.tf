@@ -124,8 +124,8 @@ variable "AUTO_MINOR_VERSION_UPGRADE" {
 
 variable "DB_SKIP_FINAL_SNAPSHOT" {
   description = "Skip the final snapshot of the DB instance if deleted"
-  type = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 # 🔹 Access & Security

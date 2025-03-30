@@ -9,12 +9,12 @@
 
 # The name of the frontend S3 bucket
 output "s3_frontend_bucket_name" {
-    value = module.s3_frontend_bucket.s3_frontend_bucket_name
+  value = module.s3_frontend_bucket.s3_frontend_bucket_name
 }
 
 # The ARN of the frontend S3 bucket
 output "s3_frontend_bucket_arn" {
-    value = module.s3_frontend_bucket.s3_frontend_bucket_arn
+  value = module.s3_frontend_bucket.s3_frontend_bucket_arn
 }
 
 #################################### ACM (SSL/TLS Certificates) ####################################
@@ -155,7 +155,7 @@ output "iam_cluster_role_name" {
 
 # The name of the EKS cluster
 output "project_eks_cluster_name" {
-  value = module.eks.iam_cluster_role_name  # This seems incorrect, should it be module.eks.cluster_name?
+  value = module.eks.iam_cluster_role_name # This seems incorrect, should it be module.eks.cluster_name?
 }
 
 #################################### ECR (Elastic Container Registry) ####################################

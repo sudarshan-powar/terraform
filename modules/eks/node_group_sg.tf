@@ -11,7 +11,7 @@
 # =====================================================
 resource "aws_security_group" "eks_node_group_sg" {
   vpc_id = var.VPC_ID
-  name   = "${var.EKS_NODE_GROUP_NAME}-sg"  # 🔹 Naming based on Node Group
+  name   = "${var.EKS_NODE_GROUP_NAME}-sg" # 🔹 Naming based on Node Group
 
   # =====================================================
   # 📤 Egress Rule (Allow all outgoing traffic)
@@ -20,7 +20,7 @@ resource "aws_security_group" "eks_node_group_sg" {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]  # 🔹 Allow outbound traffic to all destinations
+    cidr_blocks = ["0.0.0.0/0"] # 🔹 Allow outbound traffic to all destinations
   }
 
   # =====================================================
@@ -33,49 +33,49 @@ resource "aws_security_group" "eks_node_group_sg" {
     Name                                                  = "${var.EKS_NODE_GROUP_NAME}-sg"
   }
 
-  depends_on = [ aws_eks_cluster.project_eks ]
+  depends_on = [aws_eks_cluster.project_eks]
 }
 
 # =====================================================
 # 🔹 Self-Allow Rule (Nodes within the same SG can communicate)
 # =====================================================
 resource "aws_vpc_security_group_ingress_rule" "eks_node_group_sg_self_rule" {
-  security_group_id             = aws_security_group.eks_node_group_sg.id
-  referenced_security_group_id  = aws_security_group.eks_node_group_sg.id
-  ip_protocol                   = "-1"  # 🔹 Allow all traffic within the SG
+  security_group_id            = aws_security_group.eks_node_group_sg.id
+  referenced_security_group_id = aws_security_group.eks_node_group_sg.id
+  ip_protocol                  = "-1" # 🔹 Allow all traffic within the SG
 
-  depends_on = [ aws_security_group.eks_node_group_sg ]
+  depends_on = [aws_security_group.eks_node_group_sg]
 }
 
 # =====================================================
 # 🔹 Allow Traffic from Main Cluster SG to Node Group SG
 # =====================================================
 resource "aws_vpc_security_group_ingress_rule" "eks_node_group_to_main_rule" {
-  security_group_id             = aws_security_group.eks_node_group_sg.id
-  referenced_security_group_id  = aws_security_group.eks_main_cluster_sg.id
-  ip_protocol                   = "-1"  # 🔹 Allow all traffic
+  security_group_id            = aws_security_group.eks_node_group_sg.id
+  referenced_security_group_id = aws_security_group.eks_main_cluster_sg.id
+  ip_protocol                  = "-1" # 🔹 Allow all traffic
 
-  depends_on = [ aws_security_group.eks_node_group_sg ]
+  depends_on = [aws_security_group.eks_node_group_sg]
 }
 
 # =====================================================
 # 🔹 Allow Traffic from Node Group SG to Main Cluster SG
 # =====================================================
 resource "aws_vpc_security_group_ingress_rule" "eks_main_to_node_group_rule" {
-  security_group_id             = aws_security_group.eks_main_cluster_sg.id
-  referenced_security_group_id  = aws_security_group.eks_node_group_sg.id
-  ip_protocol                   = "-1"  # 🔹 Allow all traffic
+  security_group_id            = aws_security_group.eks_main_cluster_sg.id
+  referenced_security_group_id = aws_security_group.eks_node_group_sg.id
+  ip_protocol                  = "-1" # 🔹 Allow all traffic
 
-  depends_on = [ aws_security_group.eks_node_group_sg ]
+  depends_on = [aws_security_group.eks_node_group_sg]
 }
 
 # =====================================================
 # 🔹 Allow SSH Traffic from Public Server SG to Node Group SG
 # =====================================================
 resource "aws_vpc_security_group_ingress_rule" "ssh_to_node_group_rule" {
-  security_group_id             = aws_security_group.eks_node_group_sg.id
-  referenced_security_group_id  = var.PUBLIC_SERVER_SECURITY_GROUP
-  ip_protocol                   = "-1"  # 🔹 Allow all traffic (SSH, etc.)
+  security_group_id            = aws_security_group.eks_node_group_sg.id
+  referenced_security_group_id = var.PUBLIC_SERVER_SECURITY_GROUP
+  ip_protocol                  = "-1" # 🔹 Allow all traffic (SSH, etc.)
 
-  depends_on = [ aws_security_group.eks_node_group_sg ]
+  depends_on = [aws_security_group.eks_node_group_sg]
 }
