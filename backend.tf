@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "flixflow-terraform-backend"
+    bucket         = "project-terraform-backend"
     key            = "terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "flixflow-lock-table"
+    dynamodb_table = "project-lock-table"
     encrypt        = true
   }
 }
